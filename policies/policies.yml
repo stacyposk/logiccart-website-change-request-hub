@@ -1,0 +1,12 @@
+# /policies/policies.yml
+enabled:
+  - accessibility.md
+  - performance.md
+  - brand.md
+  - design-system.md
+metadata:
+  brand.md:
+    brand: LogicCart
+    version: 1.0
+  design-system.md:
+    version: 1.0

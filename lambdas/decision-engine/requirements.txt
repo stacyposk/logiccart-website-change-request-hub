@@ -1,0 +1,7 @@
+# AWS Lambda requirements for LogicCart Bedrock Agent with AI capabilities
+boto3>=1.34.0
+botocore>=1.34.0
+requests>=2.31.0
+
+# For AI decision-making and image analysis
+# Amazon Bedrock runtime is included in boto3

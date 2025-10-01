@@ -1,0 +1,806 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Geist font loaded via Next.js font optimization */
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* Primary brand #5754FF (HSL) */
+    --primary: 241 100% 66%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* Optional accent */
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 241 100% 66%;
+
+    --radius: 1rem;
+
+    /* Aurora gradient */
+    --aurora-start: 241 100% 66%;
+    --aurora-middle: 280 100% 70%;
+    --aurora-end: 320 100% 75%;
+
+    /* Glass */
+    --glass-bg: 255 255 255 / 0.1;
+    --glass-border: 255 255 255 / 0.2;
+    --glass-blur: 12px;
+
+    /* Shadows */
+    --shadow-soft: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-medium: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-large: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+    --transition-micro: 200ms;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 241 100% 66%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 241 100% 66%;
+
+    --glass-bg: 0 0 0 / 0.2;
+    --glass-border: 255 255 255 / 0.1;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Headings use Plus Jakarta Sans font */
+  h1 {
+    @apply text-4xl font-bold leading-tight tracking-tight;
+    font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  }
+
+  h2 {
+    @apply text-3xl font-semibold leading-tight tracking-tight;
+    font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold leading-tight;
+    font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  }
+
+  h4 {
+    @apply text-xl font-medium leading-snug;
+    font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  }
+
+  h5 {
+    @apply text-lg font-medium leading-snug;
+    font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  }
+
+  h6 {
+    @apply text-base font-medium leading-normal;
+    font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  }
+
+  /* Paragraphs and helper text use Geist */
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+/* Aurora / Glass / Buttons / Utilities */
+@layer components {
+  .aurora-bg {
+    background: linear-gradient(135deg, hsl(var(--aurora-start)) 0%, hsl(var(--aurora-middle)) 50%, hsl(var(--aurora-end)) 100%);
+  }
+
+
+
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .glass-card {
+    @apply glass rounded-md;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .glass-subtle {
+    background: hsl(255 255 255 / 0.05);
+    backdrop-filter: blur(8px);
+    border: 1px solid hsl(255 255 255 / 0.1);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-large {
+    box-shadow: var(--shadow-large);
+  }
+
+  .micro-interaction {
+    transition: all var(--transition-micro) cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift {
+    @apply micro-interaction;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+  }
+
+  .hover-glow {
+    @apply micro-interaction;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  .press-scale {
+    @apply micro-interaction;
+  }
+
+  .press-scale:active {
+    transform: scale(0.98);
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 micro-interaction press-scale;
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--aurora-middle)) 100%);
+    font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  }
+
+  .btn-glass {
+    @apply glass text-foreground hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 micro-interaction press-scale;
+  }
+
+  .input-glass {
+    @apply glass bg-white/5 border-white/20 focus:border-primary/50 focus:ring-2 focus:ring-primary/20 micro-interaction;
+  }
+
+  .card-aurora {
+    @apply rounded-3xl border border-slate-200 bg-white shadow-sm;
+    /* Very rounded corners to match design reference */
+  }
+
+  .focus-aurora {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* Font family utilities */
+  .font-plus-jakarta-sans {
+    font-family: var(--font-plus-jakarta-sans), system-ui, sans-serif;
+  }
+
+  .font-geist {
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-responsive-xl {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  .text-responsive-lg {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+
+  .text-responsive-base {
+    @apply text-base md:text-lg;
+  }
+
+  .space-generous {
+    @apply space-y-8 md:space-y-12;
+  }
+
+  .padding-generous {
+    @apply p-6 md:p-8 lg:p-12;
+  }
+
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Mobile-optimized scrollbars */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+
+  .scrollbar-thumb-gray-300 {
+    scrollbar-color: rgb(209 213 219) transparent;
+  }
+
+  .scrollbar-track-gray-100 {
+    scrollbar-color: rgb(209 213 219) rgb(243 244 246);
+  }
+
+  /* Webkit scrollbar styles for better mobile experience */
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: rgb(243 244 246);
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgb(209 213 219);
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgb(156 163 175);
+  }
+
+  /* Touch-friendly interactions */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  /* Line clamping for text truncation */
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  /* Tabular numbers for consistent number alignment */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+
+    .micro-interaction,
+    .hover-lift,
+    .hover-glow,
+    .press-scale {
+      transition: none;
+    }
+
+    .animate-fade-in,
+    .animate-slide-up {
+      animation: none;
+    }
+  }
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Prevent autofill blue background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Keep UI in light color scheme by default */
+:root {
+  color-scheme: light;
+}
+
+/* Custom focus ring styles for accessibility */
+@layer components {
+  .focus-ring {
+    @apply focus-visible:outline-none;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .focus-ring:focus-visible {
+    /* Pale purple gradient focus ring */
+    box-shadow:
+      0 0 0 3px rgba(139, 92, 246, 0.05),
+      0 0 0 4px rgba(139, 92, 246, 0.08),
+      0 0 0 5px rgba(139, 92, 246, 0.04),
+      /* Inner border for definition */
+      inset 0 0 0 1px rgba(139, 92, 246, 0.15);
+    border-color: rgba(139, 92, 246, 0.2);
+  }
+
+  .success-icon-gradient {
+    position: relative;
+    display: inline-block;
+  }
+
+  .success-icon-gradient svg {
+    fill: url(#success-gradient) !important;
+  }
+
+  /* Fallback for browsers that don't support SVG gradients */
+  .success-icon-gradient svg {
+    color: hsl(var(--primary));
+  }
+}
+
+/* Page background styling */
+.page-background {
+  background: #eef2ff;
+}
+
+/* ---------- DayPicker base + scoped overrides ---------- */
+
+/* Load DayPicker base CSS (low precedence layer) */
+@layer base {
+  @import 'react-day-picker/dist/style.css';
+}
+
+/* Scope everything to this app’s calendar to avoid global clashes */
+@layer components {
+  [data-cal="rdp"] .rdp {
+    --rdp-accent-color: hsl(var(--primary));
+    /* brand */
+    --rdp-background-color: hsl(var(--primary));
+    /* selected background */
+    --rdp-accent-color-dark: hsl(var(--primary));
+    /* ensure consistency */
+    --rdp-outline: 0;
+    /* remove focus ring */
+    --rdp-today-color: inherit;
+    /* keep today neutral */
+    --rdp-today-background-color: transparent;
+    /* no background for today */
+    --rdp-today-border: none;
+    /* no border for today */
+    --rdp-today-font-weight: normal;
+    /* normal font weight for today */
+    --rdp-selected-color: white;
+    /* white text for selected */
+    --rdp-selected-background-color: hsl(var(--primary));
+    /* primary background for selected */
+    --rdp-selected-border: none;
+    /* no border for selected */
+    --rdp-cell-size: 2.25rem;
+    /* consistent sizing */
+  }
+
+  /* Hide DayPicker’s built-in caption/nav; we render our own header */
+  [data-cal="rdp"] .rdp-caption,
+  [data-cal="rdp"] .rdp-caption_label,
+  [data-cal="rdp"] .rdp-nav,
+  [data-cal="rdp"] .rdp-month>h2 {
+    display: none !important;
+  }
+
+  /* Additional comprehensive hiding rules for DayPicker built-in elements */
+  [data-cal="rdp"] .rdp-caption_start,
+  [data-cal="rdp"] .rdp-caption_end,
+  [data-cal="rdp"] .rdp-caption_between,
+  [data-cal="rdp"] .rdp-nav_button,
+  [data-cal="rdp"] .rdp-nav_button_previous,
+  [data-cal="rdp"] .rdp-nav_button_next,
+  [data-cal="rdp"] .rdp-month_caption,
+  [data-cal="rdp"] .rdp-caption>*,
+  [data-cal="rdp"] .rdp-nav>*,
+  [data-cal="rdp"] button[name="previous-month"],
+  [data-cal="rdp"] button[name="next-month"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Remove any purple arrow styling and ensure no navigation elements show */
+  [data-cal="rdp"] .rdp *[class*="nav"],
+  [data-cal="rdp"] .rdp *[class*="caption"],
+  [data-cal="rdp"] .rdp *[class*="chevron"],
+  [data-cal="rdp"] .rdp *[class*="arrow"],
+  [data-cal="rdp"] .rdp svg[class*="chevron"],
+  [data-cal="rdp"] .rdp svg[class*="arrow"] {
+    display: none !important;
+    visibility: hidden !important;
+    color: transparent !important;
+    background: transparent !important;
+    border: none !important;
+    fill: transparent !important;
+    stroke: transparent !important;
+  }
+
+  /* Reduce spacing between custom header and calendar body for better visual hierarchy */
+  [data-cal="rdp"] .rdp-months {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    gap: 0 !important;
+  }
+
+  [data-cal="rdp"] .rdp-month {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    space-y: 0.75rem !important;
+    /* Reduced from default 3 (0.75rem) */
+  }
+
+  [data-cal="rdp"] .rdp-table {
+    margin-top: 0.25rem !important;
+    /* Further reduced spacing */
+    margin-bottom: 0 !important;
+  }
+
+  /* Ensure proper spacing for the calendar container */
+  [data-cal="rdp"] {
+    padding-top: 0 !important;
+    padding-bottom: 0.75rem !important;
+    /* Maintain bottom padding */
+  }
+
+  /* Override any default DayPicker spacing that might cause gaps */
+  [data-cal="rdp"] .rdp-month>* {
+    margin-top: 0 !important;
+  }
+
+  /* Tighten spacing for table head */
+  [data-cal="rdp"] .rdp-head_row {
+    margin-bottom: 0.25rem !important;
+  }
+
+  /* Adjust row spacing for better density */
+  [data-cal="rdp"] .rdp-row {
+    margin-top: 0.125rem !important;
+    /* Very tight spacing between rows */
+  }
+
+  /* Day base + hover */
+  [data-cal="rdp"] .rdp-day,
+  [data-cal="rdp"] .rdp-button {
+    height: 2.25rem;
+    /* h-9 */
+    width: 2.25rem;
+    /* w-9 */
+    border-radius: .125rem;
+    /* rounded-sm */
+    padding: 0;
+    cursor: pointer;
+  }
+
+  [data-cal="rdp"] .rdp-day:hover,
+  [data-cal="rdp"] .rdp-button:hover {
+    background: hsl(var(--primary) / 0.10) !important;
+    /* pale purple with natural inherited corners */
+  }
+
+  /* Selected: solid brand fill, white text — no ring/border/outline */
+  [data-cal="rdp"] .rdp-day_selected,
+  [data-cal="rdp"] .rdp-day_selected>.rdp-button,
+  [data-cal="rdp"] .rdp-day[aria-selected="true"],
+  [data-cal="rdp"] .rdp-day[aria-selected="true"]>.rdp-button,
+  [data-cal="rdp"] .rdp-button[aria-selected="true"],
+  [data-cal="rdp"] .rdp-day_selected .rdp-button,
+  [data-cal="rdp"] .rdp-day[aria-selected="true"] .rdp-button {
+    background: hsl(var(--primary)) !important;
+    background-color: hsl(var(--primary)) !important;
+    color: hsl(var(--primary-foreground)) !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    ring: none !important;
+    text-decoration: none !important;
+  }
+
+  /* Ensure selected date hover state maintains styling */
+  [data-cal="rdp"] .rdp-day_selected:hover,
+  [data-cal="rdp"] .rdp-day_selected>.rdp-button:hover,
+  [data-cal="rdp"] .rdp-day[aria-selected="true"]:hover,
+  [data-cal="rdp"] .rdp-day[aria-selected="true"]>.rdp-button:hover,
+  [data-cal="rdp"] .rdp-button[aria-selected="true"]:hover,
+  [data-cal="rdp"] .rdp-day_selected .rdp-button:hover,
+  [data-cal="rdp"] .rdp-day[aria-selected="true"] .rdp-button:hover {
+    background: hsl(var(--primary)) !important;
+    background-color: hsl(var(--primary)) !important;
+    color: hsl(var(--primary-foreground)) !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Remove any possible circle styling from selected dates - let it inherit natural rounding */
+  [data-cal="rdp"] .rdp-day_selected,
+  [data-cal="rdp"] .rdp-day_selected *,
+  [data-cal="rdp"] .rdp-day[aria-selected="true"],
+  [data-cal="rdp"] .rdp-day[aria-selected="true"] *,
+  [data-cal="rdp"] .rdp-button[aria-selected="true"],
+  [data-cal="rdp"] .rdp-button[aria-selected="true"] * {
+    /* Let border-radius inherit from base day elements for natural look */
+  }
+
+  /* Today: completely neutral - indistinguishable from other available dates */
+  [data-cal="rdp"] .rdp-day_today,
+  [data-cal="rdp"] .rdp-day_today>.rdp-button,
+  [data-cal="rdp"] .rdp-button[aria-current="date"],
+  [data-cal="rdp"] .rdp-day[aria-current="date"],
+  [data-cal="rdp"] .rdp-day[data-today],
+  [data-cal="rdp"] .rdp-button[data-today] {
+    color: inherit !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    font-weight: inherit !important;
+    opacity: 1 !important;
+  }
+
+  /* Ensure today's date hover state is the same as other dates */
+  [data-cal="rdp"] .rdp-day_today:hover,
+  [data-cal="rdp"] .rdp-day_today>.rdp-button:hover,
+  [data-cal="rdp"] .rdp-button[aria-current="date"]:hover,
+  [data-cal="rdp"] .rdp-day[aria-current="date"]:hover,
+  [data-cal="rdp"] .rdp-day[data-today]:hover,
+  [data-cal="rdp"] .rdp-button[data-today]:hover {
+    background: hsl(var(--primary) / 0.10) !important;
+    border-radius: 0.125rem !important;
+    color: inherit !important;
+  }
+
+  /* Override any DayPicker default today styling */
+  [data-cal="rdp"] .rdp *[class*="today"],
+  [data-cal="rdp"] .rdp *[aria-current="date"],
+  [data-cal="rdp"] .rdp *[data-today] {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: inherit !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    font-weight: inherit !important;
+  }
+
+  /* Nuclear option: override any possible today styling from DayPicker base CSS */
+  [data-cal="rdp"] .rdp-day_today,
+  [data-cal="rdp"] .rdp-day_today *,
+  [data-cal="rdp"] .rdp-button_today,
+  [data-cal="rdp"] .rdp-cell_today,
+  [data-cal="rdp"] .rdp-cell_today *,
+  [data-cal="rdp"] [aria-current="date"],
+  [data-cal="rdp"] [aria-current="date"] *,
+  [data-cal="rdp"] [data-today],
+  [data-cal="rdp"] [data-today] * {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: hsl(var(--foreground)) !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    font-weight: normal !important;
+    opacity: 1 !important;
+  }
+
+  /* Ensure today's date is not styled differently when not selected */
+  [data-cal="rdp"] .rdp-day_today:not(.rdp-day_selected):not([aria-selected="true"]),
+  [data-cal="rdp"] .rdp-day_today:not(.rdp-day_selected):not([aria-selected="true"]) *,
+  [data-cal="rdp"] [aria-current="date"]:not([aria-selected="true"]),
+  [data-cal="rdp"] [aria-current="date"]:not([aria-selected="true"]) * {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: hsl(var(--foreground)) !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+    font-weight: normal !important;
+  }
+
+  /* Nuke any browser/DayPicker focus rings */
+  [data-cal="rdp"] .rdp-button:focus,
+  [data-cal="rdp"] .rdp-button:focus-visible,
+  [data-cal="rdp"] .rdp-day:focus,
+  [data-cal="rdp"] .rdp-day:focus-visible {
+    outline: 0 !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  /* Override any DayPicker default selected styling that might interfere */
+  [data-cal="rdp"] .rdp *[aria-selected="true"],
+  [data-cal="rdp"] .rdp *[data-selected="true"],
+  [data-cal="rdp"] .rdp *.rdp-day_selected,
+  [data-cal="rdp"] .rdp *.rdp-button_selected {
+    background: hsl(var(--primary)) !important;
+    background-color: hsl(var(--primary)) !important;
+    color: white !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Nuclear option: override any possible selected date styling from DayPicker base CSS */
+  [data-cal="rdp"] .rdp-day_selected,
+  [data-cal="rdp"] .rdp-day_selected *,
+  [data-cal="rdp"] .rdp-button_selected,
+  [data-cal="rdp"] .rdp-cell_selected,
+  [data-cal="rdp"] .rdp-cell_selected *,
+  [data-cal="rdp"] [aria-selected="true"],
+  [data-cal="rdp"] [aria-selected="true"] *,
+  [data-cal="rdp"] [data-selected="true"],
+  [data-cal="rdp"] [data-selected="true"] * {
+    background: hsl(var(--primary)) !important;
+    background-color: hsl(var(--primary)) !important;
+    color: white !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+  }
+}
+
+/* KIRO_LOCK: avoid adding layout-changing rules for .rdp* (display/flex/grid/margins). */
+
+/* Sidebar active state */
+.sidebar-nav-active {
+  background-color: rgba(87, 84, 255, 0.05) !important;
+  color: #5754FF !important;
+  font-weight: 600 !important;
+}
+
+.sidebar-nav-active svg {
+  color: #5754FF !important;
+}
+
+/* Sidebar collapsed state enhancements */
+.sidebar-collapsed-item {
+  position: relative;
+}
+
+.sidebar-collapsed-item:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+  white-space: nowrap;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* Su
+ccess Page Background Optimization */
+.success-page-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-image: url('/bg-gradient.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Fallback for when image is loading */
+.success-page-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  z-index: -1;
+}

@@ -1,0 +1,210 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Testing
+/coverage
+*.lcov
+
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+
+# Production build
+/build
+/dist
+
+# Environment variables (CRITICAL SECURITY - Never commit)
+.env
+.env*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.deployment
+
+# State directory with sensitive AWS resources (CRITICAL SECURITY)
+state/
+state/*
+state/**/*
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.swp
+*.swo
+*~
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# Snowpack dependency directory (https://snowpack.dev/)
+web_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache (https://parceljs.org/)
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+storybook-static
+
+# Temporary folders
+tmp/
+temp/
+
+# AWS credentials and config (CRITICAL SECURITY)
+.aws/
+aws-credentials.json
+*.pem
+
+# Security and infrastructure specs (CRITICAL - Never commit to public repo)
+.kiro/specs/jwt-api-authorization/
+.kiro/specs/cognito-security-layer/
+.kiro/specs/aws-production-deployment/
+
+# Integration specs (MEDIUM RISK - consider excluding for public repos)
+.kiro/specs/bedrock-agent-integration-fix/
+
+# Additional security-related patterns
+.kiro/specs/*security*
+.kiro/specs/*auth*
+.kiro/specs/*jwt*
+.kiro/specs/*cognito*
+.kiro/specs/*deployment*
+.kiro/specs/*production*
+.kiro/specs/*infrastructure*
+
+# Sensitive files and credentials (CRITICAL SECURITY)
+*secret*
+*credential*
+*token*
+*password*
+*private*
+*.key
+*.crt
+*.p12
+*.pfx
+config/secrets/
+secrets/
+credentials/
+
+# Lambda deployment packages
+lambdas/**/*.zip
+*.zip
+
+# Terraform and infrastructure as code
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform/
+terraform.tfplan
+
+# Docker secrets
+docker-compose.override.yml
+.dockerignore
+
+# Generated diagrams - keeping all diagrams for project submission
+
+# SWC cache
+.swc/
+
+# Turbo
+.turbo
+
+# Local Netlify folder
+.netlify

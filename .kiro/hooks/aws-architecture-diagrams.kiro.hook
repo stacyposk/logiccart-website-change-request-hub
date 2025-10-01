@@ -1,0 +1,24 @@
+{
+  "enabled": true,
+  "name": "AWS Architecture Diagram Generator",
+  "description": "Analyzes CDK code and steering documents to generate or update AWS service architecture diagrams using Python diagrams package. Parses infrastructure code to identify services, relationships, and data flow, then creates visual representations with proper VPC grouping and service boundaries.",
+  "version": "1",
+  "when": {
+    "type": "userTriggered",
+    "patterns": [
+      "**/*.ts",
+      "**/*.js",
+      "**/*.py",
+      "**/cdk.json",
+      "**/package.json",
+      "lambdas/**/*",
+      "state/**/*",
+      "specs/**/*",
+      "policies/**/*"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Analyze the current steering document files and generate or update AWS service architecture diagrams using the Python diagrams package DSL. Parse the CDK code to identify AWS services, their relationships, and data flow. If no previous diagram exists, create a visual representation showing the infrastructure components, connections, and dependencies. Include proper grouping for VPCs, subnets, and logical service boundaries. If a previous diagram exists, delete it before creating a new one. Output the Python diagrams code that can be executed to generate the architecture diagram."
+  }
+}
